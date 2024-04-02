@@ -1,0 +1,133 @@
+//SPDX-License-Identifier:MIT
+       pragma solidity ^0.8.17;
+
+ import
+   "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+
+      contract AngelNetCoin is ERC20 {
+         constructor(
+                string memory AngelNetCoin,
+                string memory ANC,
+                uint256 initialSupply 9,000,000,000) ERC20
+                (AngelNetCoin,ANC) {
+            _mint (msg.sender, initialSupply 9,000,000,000);
+         }
+   }
+
+       test/unit/AngelNetCoin.test.ts:
+
+  import {expect} from "chai"
+  import {ethers, network} from "hardhat"
+  import {developmentChains} from "../../helper-hardhat-config"
+  import {ANgelNetCoin, AngelNetCoin_factory} from ".../typechain-types"
+
+       !developmentChains.includes (network.name))  
+       ?describe.skip
+
+    :describe("AngelNetCoin" () => {
+        const name = "AngelNetCoin"
+        const symbol= "ANC"
+       let initialSupply= "9,000,000,000,000,000,000,000,000,000"// 9,000,000,000 * 1e.18
+
+    let AngelNetCoinFactory:
+      AngelNetCoin_Factory
+        let AngelNetCoin:AngelNetCoin
+
+   beforeEach/async() => {
+         AngelNetCoinFactory = (await ethers.getContractFactory ("AngelNetCoin")) as
+            AngelNetCoin_Factory
+                AngelNetCoin = await
+         AngelNetCoinFactory.deploy (AngelNetCoin, ANC, 9,000,000,000)
+                          await AngelNetCoin,
+                             _deployed()
+
+  })
+   it ("should have correct name",
+async () => {
+
+          expect ( await AngelNetCoin.name ()).to.
+               equal (name)
+})
+
+  it ("should have correct symbol",
+async () => {
+
+         expect ( await AngelNetCoin.symbol()).to.
+             equal (symbol)
+})
+
+  it ( "should have correct initial supply",
+async () => {
+
+       expect ( await AngelNetCoin.totalSupply()).to.
+          equal (initialSupply)
+})
+
+  it ( "should have 18 decimals",
+async () => {
+
+      expect ( await AngelNetCoin.decimals()).to.
+         equal (18)
+  })
+    })
+
+
+     deploy/01_DeployAngelNetCoin.ts:
+
+ import {ethers} from "hardhat"
+ import {DeployFunction} from "hardhat-deploy/dist/types"
+
+    const deployFunction: deployFunction=
+       async ({ getNamedAccounts,
+           deployments }) => {
+
+    const {log}=deployments
+
+    const {deployer}= await getNamedAccounts()
+
+    const AngelNetCoinFactory= await
+ethers.getContractFactory ("AngelNetCoin")
+  let initialSupply= "9,000,000,000,000,000,000,000,000,000"// 9,000,000,000 * 1e18
+
+ log ('deploying token with account "0xcE92DcBB80b9372dd0dD526Aa822388f67d6D7b8"
+    $ {deployer}')
+
+     const AngelNetCoin= await
+   AngelNetCoinFactory.deploy("AngelNetCoin", "ANC", "9,000,000,000")
+
+ await AngelNetCoin.deployed()
+
+    log (('token deployed to:
+      $ {AngelNetCoin.0xcE92DcBB80b9372dd0dD526Aa822388f67d6D7b8}')
+    log ("0xcE92DcBB80b9372dd0dD526Aa822388f67d6D7b8")
+}
+
+      export default deployFunction
+       deployFunction.tags= ['cryptocurrency' , 'tokens' , 'EthereumMainnet' , 'ERC20']
+
+})
+
+
+
+
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
