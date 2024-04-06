@@ -1,0 +1,16 @@
+import yarn workspaces
+import yarn create eth-app
+import yarn 0.25+
+import yarn create <starter-kit-package>
+{
+  "orgName": "@maker-app",
+  "packageName": "@maker-app/angelnetcoin-eth-app",
+  "keywords": [
+    "dai",
+    "maker",
+    "angelnetcoin-eth-app"
+  ]
+}
+yarn create eth-app my-eth-app --framework AngelNetCoin-eth-app
+yarn create react app
+yarn react-app: start
