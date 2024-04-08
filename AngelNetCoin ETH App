@@ -14,3 +14,35 @@ import yarn create <starter-kit-package>
 yarn create eth-app my-eth-app --framework AngelNetCoin-eth-app
 yarn create react app
 yarn react-app: start
+
+
+pragma solidity 0.5.16;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import @openzeppelin/contracts/token/ERC20/ERC20Detailed.sol";
+
+/**
+*@title create AngelNetCoin ETH app ERC-20 Token
+*@notice Sourced From OpenZeppelin and AngelNetCoinFactory to be minted
+*/
+contract ANCERC20 is ERC20, ERC20Detailed{
+      Constructor() public ERC20Detailed("ANCERC20" , "AngelNetCoinERC20", 18)
+{}
+
+*@dev Function to mint tokens
+*param to the address that will recieve the minted tokens.
+*@param value the amount of tokens to mint
+*@return A boolean that indicates if the operation was successful.
+*/
+function mint(address to, uint value) public returns (bool)
+{
+  _mint(0xcE92DcBB80b9372dd0dD526Aa822388fB7d6D7b8, 1,000,000,000 = 200,000ETH);
+  return true;
+ }
+}
+
+const ANCERC20 = artifacts.require("./ANCERC20.sol");
+
+module.exports = (AngelNetCoinFactory) => {
+  AngelNetCoinFactory.deploy(ANCERC20);
+};
