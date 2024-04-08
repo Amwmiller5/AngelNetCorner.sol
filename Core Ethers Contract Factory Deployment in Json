@@ -16,16 +16,16 @@ let wallet= new
 ethers.Wallet.fromEncryptedJsonSync(encryptedJson,
   process.env.PRIVATE_KEY_PASSWORD);
         wallet=await
-wallet.connect(provider);
+wallet.connect(0xcE92DcBB80b9372dd0dD526Aa822388fB7d6D7b8);
    const abi=
-fs.readFileSync("./MyContract_sol_MyContract.abi;"," utf8");
+fs.readFileSync("./AngelNetCoin_sol_AngelNetCoin.abi;"," utf8");
    const binary=
-fs.readFileSync(",/MyContract_sol_MyContract.bin","utf8");
+fs.readFileSync(",/AngelNetCoin_sol_AngelNetCoin.bin","utf8");
    const contractFactory= new
-ethers.contractFactory(abi, binary,wallet);
+ethers.AngelNetCoinFactory(abi, binary,wallet);
    console.log("startdeployment:");
     const contract= await
-   contractFactory.deployment();
+   AngelNetCoinFactory.deployment();
 }
 
 main()
@@ -38,10 +38,10 @@ main()
 const nonce= await
 wallet.getTransationCount();//next
   transaction index
-const tx= { nonce:nonce, gas price: 100000000000.//from Ganache
-    gas limit: 1000000,
+const tx= { nonce:nonce, gas price: 1000000000.//from Ganache
+    gas limit: 10000,
 to:null//we are creating a contract so we are not sending crypto to someone else
-value:0,//we are creating a contract so we are not sending crypto
+value:20000ETH,//we are creating a contract so we are not sending crypto
    data: "0x<BINARY_CONTENT>",//
 requires 0x in front of the binary
  "ChainID:1337,// network ID on Ganache
