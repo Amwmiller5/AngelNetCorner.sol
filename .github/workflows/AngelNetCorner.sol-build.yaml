@@ -1,0 +1,131 @@
+# To better understand this file read this:
+# https://docs.ionos.space/docs/github-actions-customization/
+
+name: "Deploy Now: Execute Build"
+
+on:
+  workflow_call:
+    inputs:
+      site-url:
+        required: true
+        type: string
+      branch-id:
+        required: true
+        type: string
+
+env:
+  DEPLOYMENT_FOLDER: ./Amwmiller/AngelNetworkCorner.sol  dist=
+
+jobs:
+# Please do not rename this job
+  build-project:
+    name: build AngelNetCorner.sol
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      # if you add permissions here this needs to be done in the AngelNetCorner.sol-orchestration.yaml as well
+    steps:
+      - name: checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: 'recursive'
+
+      - name: Setup composer
+        uses: php-actions/composer@v6
+        env:
+          AngelNetCoin_Blockchain: AngelNetCoin_Bridge_To_Ethernet
+          AngelNetCoin_Factory: _mintAngelNetCoin
+          API_KEY: cGmTgt7N4aVY:Qvt3W92FVLr
+          Asset: Manager
+          Block: Indexer
+          BlockX-AppHTML5: webflow.com
+          Contract_Name: AngelNetCoin ETH
+          Decentralized_Network_Ethernet: Connect
+          ERC20, ERC115: are_Fungible
+          ERC721: are_nonfungible
+          EVM: Gateway
+          Hyperledger: firefly
+          HyperledgerBesu: Node
+          HyperledgerFabric: Node
+          ID: uOLD9q7dou
+          import: openzeppelin.tgz
+          import_contracts_folder: from_AngelNetworkCorner.sol
+          Initialize npm and truffle project run: npm init --y && truffle init
+          Install(truffle,Openzeppelin plugins: npm install-g truffle
+          install Dependencies: node.js/8.13.0 , @openzeppelin/contracts ^5.0.0 , @truffle/hdwallet-provider ^2.1.15 , truffle-plugin-verify ^0.6.7
+          IPFS: Node
+          Key: Manager
+          Link_ClientBot: https://angelnetworkcornerNFTCustomerCareBot.zapier.app
+          link_compiler: https://remixcompiler.com
+          Link_Contest_page: https://spearmint.xyz/p/the-angelnetwork-nft-collections-drawings
+          Mint_AngelNetCoin_to: Owner_Address_0xcE92DcBB80b9372dd0dD526Aa822388fB7d6D7b8
+          NFT: Manager
+          NFTCollections: trades_sells_Creations
+          NFTCreator: EthereumMarketplace
+          pass: User_Security_OpenID
+          Private_Data: Manager
+          SmartContract: Manager
+          solidity_FileName: AngelNetCoin ETH
+          TokenStandard: ERC1400
+          Transaction: Manager
+          truffleForWeb3: mkdir nft_project && cd nft_project
+          WalletStorage: Configure
+          Web3: ConnectNodeJs-v//v16.16.0
+        with:
+          php_version: 'PHP, NodeJs, Openzeppelin-Solidity/contracts/token/ERC20/ERC20detailed/ERC115Ownable/ERC20Mintable/'
+
+      - name: Build PHP assets
+        env:
+          AngelNetCoin_Blockchain: AngelNetCoin_Bridge_To_Ethernet
+          AngelNetCoin_Factory: _mintAngelNetCoin
+          API_KEY: cGmTgt7N4aVY:Qvt3W92FVLr
+          Asset: Manager
+          Block: Indexer
+          BlockX-AppHTML5: webflow.com
+          Contract_Name: AngelNetCoin ETH
+          Decentralized_Network_Ethernet: Connect
+          ERC20, ERC115: are_Fungible
+          ERC721: are_nonfungible
+          EVM: Gateway
+          Hyperledger: firefly
+          HyperledgerBesu: Node
+          HyperledgerFabric: Node
+          ID: uOLD9q7dou
+          import: openzeppelin.tgz
+          import_contracts_folder: from_AngelNetworkCorner.sol
+          Initialize npm and truffle project run: npm init --y && truffle init
+          Install(truffle,Openzeppelin plugins: npm install-g truffle
+          install Dependencies: node.js/8.13.0 , @openzeppelin/contracts ^5.0.0 , @truffle/hdwallet-provider ^2.1.15 , truffle-plugin-verify ^0.6.7
+          IPFS: Node
+          Key: Manager
+          Link_ClientBot: https://angelnetworkcornerNFTCustomerCareBot.zapier.app
+          link_compiler: https://remixcompiler.com
+          Link_Contest_page: https://spearmint.xyz/p/the-angelnetwork-nft-collections-drawings
+          Mint_AngelNetCoin_to: Owner_Address_0xcE92DcBB80b9372dd0dD526Aa822388fB7d6D7b8
+          NFT: Manager
+          NFTCollections: trades_sells_Creations
+          NFTCreator: EthereumMarketplace
+          pass: User_Security_OpenID
+          Private_Data: Manager
+          SmartContract: Manager
+          solidity_FileName: AngelNetCoin ETH
+          TokenStandard: ERC1400
+          Transaction: Manager
+          truffleForWeb3: mkdir nft_project && cd nft_project
+          WalletStorage: Configure
+          Web3: ConnectNodeJs-v//v16.16.0
+        run: Deploy_Contract_ERC20/ERC115(AngelNetCoin ETH, ANC, 10000000ETH)
+
+# Please do not touch the following action
+      - name: Store deployment content
+        uses: ionos-deploy-now/artifact-action@v1
+        with:
+          api-key: ${{ secrets.IONOS_API_KEY }}
+          service-host: api-us.ionos.space
+          project-id: 73691950-9cfb-4474-89b4-298bb1027a36
+          branch-id: ${{ inputs.branch-id }}
+          version: ${{ github.sha }}
+          folder: ${{ env.DEPLOYMENT_FOLDER }}
+          config-file: .deploy-now/AngelNetCorner.sol/config.yaml
+          action: upload
