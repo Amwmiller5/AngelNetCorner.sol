@@ -20,3 +20,11 @@ function Home() {
 }
 
 
+let props: ThirdwebNftMediaProps & RefAttributes<HTMLMediaElement>;
+
+let returnType: ReactNode;
+
+HTTP Provider
+alpha-spring-film.sepolia-ethernet-quicknode.pro/0de5a966be2f6e5bbd7c879358208e0fb2024fde/
+
+
