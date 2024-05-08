@@ -1,0 +1,91 @@
+import { useEmbeddedWallet } from "@thirdweb-dev/react";
+
+function App() {
+  const { connect, sendVerificationEmail } = useEmbeddedWallet();
+
+  const sendVerificationCode = async (email: string) => {
+    // send email verification code
+    await sendVerificationEmail({ email });
+  };
+
+  const handleLogin = async (
+    email: string,
+    verificationCode: string,
+  ) => {
+    // verify email and connect
+    await connect({
+      strategy: "email_verification",
+      email,
+      verificationCode,
+    });
+  };
+
+  return <div> ... </div>;
+}
+
+
+import { useEmbeddedWallet } from "@thirdweb-dev/react";
+
+function App() {
+  const { connect } = useEmbeddedWallet();
+
+  const handleLogin = async () => {
+    await connect({
+      strategy: "google",
+    });
+  };
+
+  return <button onClick={handleLogin}> Sign in with Google </button>;
+}
+
+
+// email verification
+type EmailVerificationAuthParams = {
+  strategy: "email_verification";
+  email: string;
+  verificationCode: string;
+  recoveryCode?: string;
+};
+
+export type EmbeddedWalletOauthStrategy =
+  | "google"
+  | "apple"
+  | "facebook";
+
+type OauthAuthParams = {
+  strategy: EmbeddedWalletOauthStrategy;
+  openedWindow?: Window;
+  closeOpenedWindow?: (window: Window) => void;
+};
+
+// bring your own authentication
+type JwtAuthParams = {
+  strategy: "jwt";
+  jwt: string;
+  encryptionKey?: string;
+};
+
+// open iframe to send and input the verification code only
+type IframeOtpAuthParams = {
+  strategy: "iframe_email_verification";
+  email: string;
+};
+
+// open iframe to enter email and verification code
+type IframeAuthParams = {
+  strategy: "iframe";
+};
+
+function useEmbeddedWallet(): {
+  connect: (authParams: AuthParams) => Promise<EmbeddedWallet>;
+  sendVerificationEmail: (__namedParameters: {
+    email: string;
+  }) => Promise<SendEmailOtpReturnType>;
+};
+
+let returnType: {
+  connect: (authParams: AuthParams) => Promise<EmbeddedWallet>;
+  sendVerificationEmail: (__namedParameters: {
+    email: string;
+  }) => Promise<SendEmailOtpReturnType>;
+};
