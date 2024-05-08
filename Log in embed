@@ -16,3 +16,54 @@ function Example() {
     </div>
   );
 }
+
+function ConnectEmbed(props: ConnectEmbedProps): Element;
+
+
+Parameters
+
+props
+The props for the component.
+
+className
+Class name to be added to the root element of ConnectEmbed
+
+theme
+theme for the ConnectEmbed
+auth
+Enforce that users must sign in with their wallet using auth after connecting their wallet.
+
+This requires the authConfig prop to be set on the ThirdWebProvider component.
+
+The auth prop accepts an object with the following properties:
+
+loginOptional - specify whether signing in is optional or not. By default it is false ( sign in is required ) if authConfig is set on ThirdWebProvider
+
+onLogin - Callback to be called after user signs in with their wallet
+
+onLogout - Callback to be called after user signs out
+
+onConnect
+Callback to be called on successful connection of wallet
+
+<ConnectEmbed
+  onConnect={() => {
+    console.log("wallet connected");
+  }}
+/>;
+
+Note that this does not include the sign in, If you want to call a callback after user connects AND signs in with their wallet, use auth.onLogin prop instead
+
+<ConnectEmbed
+  auth={{
+    onLogin: () => {
+      console.log("wallet connected and signed in");
+    },
+  }}
+/>;
+
+let props: ConnectEmbedProps;
+<ConnectWallet showAngelNetCoinBranding={True} />;
+let returnType: Element;
+
+
