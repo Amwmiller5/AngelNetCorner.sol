@@ -1,5 +1,5 @@
 # Security Policy
-
+If you encounter any flaws or vulnerability or weak spots in the security of this system please email us at the.angelnetworkcorner@gmail.com with Subject line: ( Security Concerns in Site) and someone will get back to you as soon as possible. To address your concerns, we thank you for you assistance because we do what we can to ensure your privacy is protected at all times.
 ## Supported Versions
 
 Use this section to tell people about which versions of your project are
